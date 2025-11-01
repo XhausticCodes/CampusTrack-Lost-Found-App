@@ -7,6 +7,7 @@ import {
 } from "../Services/ItemService";
 import { getUserDetails } from "../Services/LoginService";
 import { CheckCircle, ArrowLeft } from "lucide-react";
+import ReturnButton from "./Buttons/ReturnButton";
 
 const MarkAsFound = () => {
   const { id } = useParams();
@@ -78,12 +79,7 @@ const MarkAsFound = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 sm:p-6 lg:p-8 flex items-center justify-center">
       <div className="max-w-2xl w-full">
         <div className="mb-6">
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
-          >
-            <ArrowLeft size={18} /> Return
-          </button>
+          <ReturnButton />
         </div>
 
         <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl overflow-hidden">

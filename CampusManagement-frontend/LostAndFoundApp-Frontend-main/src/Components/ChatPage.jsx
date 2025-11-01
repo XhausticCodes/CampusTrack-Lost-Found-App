@@ -13,6 +13,7 @@ import {
   Edit2,
   Check,
 } from "lucide-react";
+import ReturnButton from "./Buttons/ReturnButton";
 
 // Theme toggle button
 const ThemeToggleButton = () => {
@@ -268,10 +269,13 @@ const ChatPage = () => {
         <div
           className={`${themeClasses.bgSecondary} p-4 border-b ${themeClasses.borderPrimary} flex justify-between`}
         >
+          <div className="flex gap-4">
+            <ReturnButton />
           <div className="flex items-center gap-4">
             <h2 className="text-2xl font-bold">
               {activeChatUser ? `Chat with ${activeChatUser}` : "Global Chat"}
             </h2>
+          </div>
           </div>
           <div className="flex items-center gap-4">
             <span
