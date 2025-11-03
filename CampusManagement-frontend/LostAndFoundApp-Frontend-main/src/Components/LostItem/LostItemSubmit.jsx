@@ -6,6 +6,7 @@ import axios from "axios";
 import { ArrowLeft, CloudUpload, X } from "lucide-react";
 import { ThemeContext } from "../../Context/ThemeContext";
 import ReturnButton from "../Buttons/ReturnButton";
+import ReturnHome from "../Buttons/ReturnHome";
 
 const DEFAULT_IMAGE_URL =
   "https://res.cloudinary.com/dyowvqcsn/image/upload/v1762132750/l3bd0utk911yhublesby.png";
@@ -161,13 +162,14 @@ const LostItemSubmit = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col items-center justify-center p-4 ${
+      className={`h-full flex flex-col items-center justify-center p-4 overflow-y-auto ${
         theme === "light" ? "bg-gray-50" : "bg-gray-900 text-white"
       }`}
     >
       <div className="w-full max-w-6xl">
         <div className="mb-4">
-          <ReturnButton />
+          {/* <ReturnButton /> */}
+          <ReturnHome />
         </div>
 
         <form

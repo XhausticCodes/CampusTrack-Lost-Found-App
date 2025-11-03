@@ -8,6 +8,7 @@ import { getUserDetails } from "../../Services/LoginService";
 import { Search, ArrowLeft, X, User } from "lucide-react";
 import { ThemeContext } from "../../Context/ThemeContext";
 import ReturnButton from "../Buttons/ReturnButton";
+import ReturnHome from "../Buttons/ReturnHome";
 
 // Compact detail item for grid layout
 const DetailItem = ({ label, value }) => (
@@ -59,21 +60,22 @@ const LostItemReport = () => {
 
   return (
     <div
-      className={`min-h-screen p-4 sm:p-6 lg:p-8 ${
+      className={`h-full p-4 sm:p-6 ${
         theme === "light" ? "bg-gray-50" : "bg-gray-900 text-white"
       }`}
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-6">
-          <ReturnButton />
+      <div className="max-w-7xl mx-auto h-full flex flex-col">
+        <div className="mb-4">
+          {/* <ReturnButton /> */}
+          <ReturnHome />
         </div>
         <div
-          className={`shadow-xl rounded-2xl overflow-hidden ${
+          className={`shadow-xl rounded-2xl overflow-hidden flex-1 flex flex-col ${
             theme === "light" ? "bg-white" : "bg-gray-800"
           }`}
         >
           <div
-            className={`p-6 sm:p-8 border-b ${
+            className={`p-4 sm:p-6 border-b flex-shrink-0 ${
               theme === "light" ? "border-gray-200" : "border-gray-700"
             }`}
           >
@@ -83,7 +85,7 @@ const LostItemReport = () => {
               </div>
               <div>
                 <h2
-                  className={`text-2xl font-bold ${
+                  className={`text-xl font-bold ${
                     theme === "light" ? "text-gray-800" : "text-white"
                   }`}
                 >
@@ -100,7 +102,7 @@ const LostItemReport = () => {
             </div>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-auto flex-1">
             <table
               className={`min-w-full divide-y ${
                 theme === "light" ? "divide-gray-200" : "divide-gray-700"
@@ -215,11 +217,10 @@ const LostItemReport = () => {
 
       {/* Modal */}
       {selectedItem && (
-        <div className={`fixed inset-0 backdrop-blur-xl flex items-center justify-center z-50 p-4 transition-opacity duration-300 ${
-          theme === "light"
-            ? " bg-black/50"
-            : " bg-black/10"
-        }`}
+        <div
+          className={`fixed inset-0 backdrop-blur-xl flex items-center justify-center z-50 p-4 transition-opacity duration-300 ${
+            theme === "light" ? " bg-black/50" : " bg-black/10"
+          }`}
         >
           <div
             className="bg-white rounded-lg shadow-xl w-full max-w-3xl flex flex-col sm:flex-row animate-scale-in"
@@ -284,7 +285,7 @@ const LostItemReport = () => {
       {currentUser?.role !== "Admin" && (
         <button
           onClick={() => navigate("/LostItemTrack")}
-          className="fixed bottom-8 right-8 bg-red-600 text-white px-5 py-3 rounded-full shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-2xl flex items-center gap-2"
+          className="fixed bottom-8 right-8 bg-red-600 text-white px-5 py-3 rounded-full shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-2xl flex items-center gap-2 cursor-pointer"
         >
           <Search className="h-5 w-5" />
           Track Your Lost Item

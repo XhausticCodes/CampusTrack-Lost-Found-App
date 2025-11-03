@@ -13,3 +13,116 @@
 *{
     font-family: Gilroy;
 }
+
+/* Custom Scrollbar Styling */
+/* For Firefox - Light Theme (default) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+/* For Chrome, Edge, Safari - Light Theme (default) */
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+    transition: background 0.2s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Dark Theme Scrollbar - Applied to dark background containers */
+.bg-gray-900,
+.bg-gray-800,
+.bg-gray-900 *,
+.bg-gray-800 *,
+.dark\:bg-gray-900,
+.dark\:bg-gray-800 {
+    scrollbar-color: #475569 #1e293b;
+}
+
+.bg-gray-900::-webkit-scrollbar-track,
+.bg-gray-800::-webkit-scrollbar-track,
+.bg-gray-900 *::-webkit-scrollbar-track,
+.bg-gray-800 *::-webkit-scrollbar-track,
+.dark\:bg-gray-900::-webkit-scrollbar-track,
+.dark\:bg-gray-800::-webkit-scrollbar-track {
+    background: #1e293b;
+    border-radius: 10px;
+}
+
+.bg-gray-900::-webkit-scrollbar-thumb,
+.bg-gray-800::-webkit-scrollbar-thumb,
+.bg-gray-900 *::-webkit-scrollbar-thumb,
+.bg-gray-800 *::-webkit-scrollbar-thumb,
+.dark\:bg-gray-900::-webkit-scrollbar-thumb,
+.dark\:bg-gray-800::-webkit-scrollbar-thumb {
+    background: #475569;
+    border: 2px solid #1e293b;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+.bg-gray-900::-webkit-scrollbar-thumb:hover,
+.bg-gray-800::-webkit-scrollbar-thumb:hover,
+.bg-gray-900 *::-webkit-scrollbar-thumb:hover,
+.bg-gray-800 *::-webkit-scrollbar-thumb:hover,
+.dark\:bg-gray-900::-webkit-scrollbar-thumb:hover,
+.dark\:bg-gray-800::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Specific styling for elements with text-white class (usually dark themed) */
+.text-white::-webkit-scrollbar-track,
+.text-white *::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+.text-white::-webkit-scrollbar-thumb,
+.text-white *::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-color: #1e293b;
+}
+
+.text-white::-webkit-scrollbar-thumb:hover,
+.text-white *::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+.text-white,
+.text-white * {
+    scrollbar-color: #475569 #1e293b;
+}
+
+/* Dark mode utility class */
+.dark {
+    scrollbar-color: #475569 #1e293b;
+}
+
+.dark::-webkit-scrollbar-track,
+.dark *::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+.dark::-webkit-scrollbar-thumb,
+.dark *::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-color: #1e293b;
+}
+
+.dark::-webkit-scrollbar-thumb:hover,
+.dark *::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}

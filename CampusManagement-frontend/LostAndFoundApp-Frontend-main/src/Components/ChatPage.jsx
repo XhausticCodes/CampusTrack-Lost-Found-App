@@ -14,6 +14,7 @@ import {
   Check,
 } from "lucide-react";
 import ReturnButton from "./Buttons/ReturnButton";
+import ReturnHome from "./Buttons/ReturnHome";
 
 // Theme toggle button
 const ThemeToggleButton = () => {
@@ -147,7 +148,7 @@ const ChatPage = () => {
   if (!isConnected || !currentUser) {
     return (
       <div
-        className={`flex items-center justify-center h-screen ${themeClasses.bgSecondary} ${themeClasses.textPrimary}`}
+        className={`flex items-center justify-center h-full ${themeClasses.bgSecondary} ${themeClasses.textPrimary}`}
       >
         <div className="text-center">
           <p>Connecting to chat...</p>
@@ -161,7 +162,7 @@ const ChatPage = () => {
 
   return (
     <div
-      className={`flex h-screen ${themeClasses.bgPrimary} ${themeClasses.textPrimary}`}
+      className={`flex h-full ${themeClasses.bgPrimary} ${themeClasses.textPrimary}`}
     >
       {/* Sidebar */}
       <div
@@ -270,12 +271,13 @@ const ChatPage = () => {
           className={`${themeClasses.bgSecondary} p-4 border-b ${themeClasses.borderPrimary} flex justify-between`}
         >
           <div className="flex gap-4">
-            <ReturnButton />
-          <div className="flex items-center gap-4">
-            <h2 className="text-2xl font-bold">
-              {activeChatUser ? `Chat with ${activeChatUser}` : "Global Chat"}
-            </h2>
-          </div>
+            {/* <ReturnButton /> */}
+            <ReturnHome />
+            <div className="flex items-center gap-4">
+              <h2 className="text-2xl font-bold">
+                {activeChatUser ? `Chat with ${activeChatUser}` : "Global Chat"}
+              </h2>
+            </div>
           </div>
           <div className="flex items-center gap-4">
             <span

@@ -19,6 +19,7 @@ import NotFound from "./Components/NotFound";
 // --- IMPORTS FOR CHAT ---
 import { WebSocketProvider } from "./Context/WebSocketContext";
 import ChatPage from "./Components/ChatPage";
+import RoleBasedLayout from "./Components/Layout/RoleBasedLayout";
 
 function App() {
   return (
@@ -36,7 +37,9 @@ function App() {
               path="/AdminMenu"
               element={
                 <ProtectedRoute allowedRoles={["Admin"]}>
-                  <AdminMenu />
+                  <RoleBasedLayout>
+                    <AdminMenu />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />
@@ -44,7 +47,9 @@ function App() {
               path="/DeleteStudentList"
               element={
                 <ProtectedRoute allowedRoles={["Admin"]}>
-                  <DeleteStudentList />
+                  <RoleBasedLayout>
+                    <DeleteStudentList />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />
@@ -54,7 +59,9 @@ function App() {
               path="/StudentMenu"
               element={
                 <ProtectedRoute allowedRoles={["Student"]}>
-                  <StudentMenu />
+                  <RoleBasedLayout>
+                    <StudentMenu />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />
@@ -62,7 +69,9 @@ function App() {
               path="/LostSubmit"
               element={
                 <ProtectedRoute allowedRoles={["Student"]}>
-                  <LostItemSubmit />
+                  <RoleBasedLayout>
+                    <LostItemSubmit />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />
@@ -70,7 +79,9 @@ function App() {
               path="/LostItemTrack"
               element={
                 <ProtectedRoute allowedRoles={["Student"]}>
-                  <LostItemTrack />
+                  <RoleBasedLayout>
+                    <LostItemTrack />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />
@@ -78,7 +89,9 @@ function App() {
               path="/FoundSubmit"
               element={
                 <ProtectedRoute allowedRoles={["Student"]}>
-                  <FoundItemSubmission />
+                  <RoleBasedLayout>
+                    <FoundItemSubmission />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />
@@ -86,7 +99,9 @@ function App() {
               path="/FoundItemTrack"
               element={
                 <ProtectedRoute allowedRoles={["Student"]}>
-                  <FoundItemTrack />
+                  <RoleBasedLayout>
+                    <FoundItemTrack />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />
@@ -94,7 +109,9 @@ function App() {
               path="/mark-found/:id"
               element={
                 <ProtectedRoute allowedRoles={["Student"]}>
-                  <MarkAsFound />
+                  <RoleBasedLayout>
+                    <MarkAsFound />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />
@@ -102,7 +119,9 @@ function App() {
               path="/Personal"
               element={
                 <ProtectedRoute allowedRoles={["Student"]}>
-                  <Profile />
+                  <RoleBasedLayout>
+                    <Profile />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />
@@ -112,7 +131,9 @@ function App() {
               path="/chat"
               element={
                 <ProtectedRoute allowedRoles={["Admin", "Student"]}>
-                  <ChatPage />
+                  <RoleBasedLayout>
+                    <ChatPage />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />
@@ -122,7 +143,9 @@ function App() {
               path="/LostReport"
               element={
                 <ProtectedRoute allowedRoles={["Admin", "Student"]}>
-                  <LostItemReport />
+                  <RoleBasedLayout>
+                    <LostItemReport />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />
@@ -130,7 +153,9 @@ function App() {
               path="/FoundReport"
               element={
                 <ProtectedRoute allowedRoles={["Admin", "Student"]}>
-                  <FoundItemReport />
+                  <RoleBasedLayout>
+                    <FoundItemReport />
+                  </RoleBasedLayout>
                 </ProtectedRoute>
               }
             />

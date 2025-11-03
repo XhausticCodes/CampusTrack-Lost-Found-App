@@ -70,36 +70,36 @@ const DeleteStudentList = () => {
   if (loading)
     return (
       <div
-        className={`min-h-screen flex justify-center items-center ${
+        className={`h-full flex justify-center items-center ${
           theme === "light"
             ? "bg-gray-50 text-gray-600"
             : "bg-gray-900 text-gray-300"
         }`}
       >
-                <p className="text-lg font-medium">Loading...</p>     {" "}
+        <p className="text-lg font-medium">Loading...</p>
       </div>
     );
 
   if (error)
     return (
       <div
-        className={`min-h-screen flex justify-center items-center ${
+        className={`h-full flex justify-center items-center ${
           theme === "light"
             ? "bg-gray-50 text-red-600"
             : "bg-gray-900 text-red-400"
         }`}
       >
-                <p className="text-lg font-medium">{error}</p>     {" "}
+        <p className="text-lg font-medium">{error}</p>
       </div>
     );
 
   return (
     <div
-      className={`min-h-screen w-full ${
+      className={`h-full w-full overflow-y-auto ${
         theme === "light" ? "bg-gray-50" : "bg-gray-900"
       }`}
     >
-      <div className="max-w-6xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div
           className={`p-6 shadow-xl rounded-xl ${
             theme === "light" ? "bg-white" : "bg-gray-800 text-white"
@@ -236,9 +236,7 @@ const DeleteStudentList = () => {
       {studentToView && (
         <div
           className={`fixed inset-0 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-opacity duration-300  ${
-            theme === "light"
-              ? " bg-black/50"
-              : " bg-black/10"
+            theme === "light" ? " bg-black/50" : " bg-black/10"
           }`}
         >
           <div

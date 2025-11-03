@@ -381,12 +381,12 @@ const LostItemTrack = () => {
 
   return (
     <div
-      className={`min-h-screen p-4 sm:p-6 lg:p-8 ${
+      className={`h-full p-4 sm:p-6 overflow-y-auto ${
         theme === "light" ? "bg-gray-50" : "bg-gray-900 text-white"
       }`}
     >
       <div className="max-w-6xl mx-auto">
-        <div className="mb-6 flex justify-between items-center">
+        <div className="mb-4 flex justify-between items-center">
           <ReturnButton />
         </div>
         <div className="text-center mb-8">

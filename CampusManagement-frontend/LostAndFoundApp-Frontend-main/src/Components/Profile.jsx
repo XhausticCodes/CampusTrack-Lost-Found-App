@@ -62,13 +62,13 @@ const Profile = () => {
 
   return (
     <div
-      className={`min-h-screen p-4 sm:p-6 lg:p-8 ${
+      className={`h-full p-4 sm:p-6 overflow-y-auto ${
         theme === "light" ? "bg-gray-50" : "bg-gray-900 text-white"
       }`}
     >
       <div className="max-w-4xl mx-auto">
         {/* Return Button */}
-        <div className="mb-6">
+        <div className="mb-4">
           <ReturnButton />
         </div>
 
