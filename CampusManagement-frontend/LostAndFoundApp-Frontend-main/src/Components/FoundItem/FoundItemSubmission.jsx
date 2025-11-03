@@ -7,6 +7,9 @@ import { ArrowLeft, CloudUpload, X } from "lucide-react";
 import { ThemeContext } from "../../Context/ThemeContext";
 import ReturnButton from "../Buttons/ReturnButton";
 
+const DEFAULT_IMAGE_URL =
+  "https://res.cloudinary.com/dyowvqcsn/image/upload/v1762132750/l3bd0utk911yhublesby.png";
+
 const FoundItemSubmission = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
@@ -72,10 +75,26 @@ const FoundItemSubmission = () => {
     try {
       const res = await axios.post(
         "https://api.cloudinary.com/v1_1/dyowvqcsn/image/upload",
-        formData
+        formData,
+        {
+          withCredentials: false, // Cloudinary doesn't need credentials
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
-      return res.data.secure_url;
+      if (res.data && res.data.secure_url) {
+        return res.data.secure_url;
+      } else {
+        console.error("Unexpected Cloudinary response:", res.data);
+        setErrors((prev) => ({
+          ...prev,
+          image: "Image upload failed: Invalid response.",
+        }));
+        return null;
+      }
     } catch (error) {
+      console.error("Cloudinary upload error:", error);
       setErrors((prev) => ({ ...prev, image: "Image Upload Failed." }));
       return null;
     } finally {
@@ -111,7 +130,7 @@ const FoundItemSubmission = () => {
     if (!validateForm()) return;
     setIsSubmitting(true);
 
-    let imageUrl = item.imageUrl;
+    let imageUrl = DEFAULT_IMAGE_URL;
     if (imageFile) {
       const uploadedUrl = await uploadImgToCloudinary();
       if (uploadedUrl) {

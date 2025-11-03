@@ -235,10 +235,10 @@ const DeleteStudentList = () => {
       {/* Student Details Modal */}
       {studentToView && (
         <div
-          className={`fixed inset-0 flex items-center justify-center z-50 p-4 ${
+          className={`fixed inset-0 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-opacity duration-300  ${
             theme === "light"
-              ? "bg-black bg-opacity-50"
-              : "bg-black bg-opacity-70"
+              ? " bg-black/50"
+              : " bg-black/10"
           }`}
         >
           <div
@@ -249,10 +249,10 @@ const DeleteStudentList = () => {
             <div className="p-6 relative">
               <button
                 onClick={() => setStudentToView(null)}
-                className={`absolute top-4 right-4 ${
+                className={`absolute top-4 right-4 cursor-pointer ${
                   theme === "light"
-                    ? "text-gray-400 hover:text-gray-600"
-                    : "text-gray-300 hover:text-white"
+                    ? "text-gray-400 hover:text-red-500"
+                    : "text-gray-300 hover:text-red-500"
                 }`}
               >
                 <X size={24} />

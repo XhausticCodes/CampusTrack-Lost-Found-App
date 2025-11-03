@@ -205,7 +205,12 @@ const FoundItemReport = () => {
 
       {/* Industry Standard Modal */}
       {selectedItem && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4 transition-opacity duration-300">
+        <div className={`fixed inset-0 backdrop-blur-xl flex items-center justify-center z-50 p-4 transition-opacity duration-300 ${
+            theme === "light"
+              ? " bg-black/50"
+              : " bg-black/10"
+          }`}
+          >
           <div className="bg-white rounded-lg shadow-xl w-full max-w-3xl flex flex-col sm:flex-row animate-scale-in">
             <div className="w-full sm:w-2/5 bg-gray-100 rounded-t-lg sm:rounded-l-lg sm:rounded-t-none flex items-center justify-center p-6">
               <img
@@ -230,7 +235,7 @@ const FoundItemReport = () => {
                 </div>
                 <button
                   onClick={() => setSelectedItem(null)}
-                  className="text-gray-400 hover:text-gray-700"
+                  className="text-gray-400 hover:text-red-500 cursor-pointer"
                 >
                   <X size={24} />
                 </button>
@@ -262,14 +267,16 @@ const FoundItemReport = () => {
           </div>
         </div>
       )}
-      {/* Floating Track Button */}
-      <button
-        onClick={() => navigate("/FoundItemTrack")}
-        className="fixed bottom-8 right-8 bg-green-600 text-white px-5 py-3 rounded-full shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-2xl flex items-center gap-2"
-      >
-        <ArchiveRestore className="h-5 w-5" />
-        Track Your Found Item
-      </button>
+      {/* Floating Track Button - Only show for Students */}
+      {currentUser?.role !== "Admin" && (
+        <button
+          onClick={() => navigate("/FoundItemTrack")}
+          className="fixed bottom-8 right-8 bg-green-600 text-white px-5 py-3 rounded-full shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-2xl flex items-center gap-2"
+        >
+          <ArchiveRestore className="h-5 w-5" />
+          Track Your Found Item
+        </button>
+      )}
     </div>
   );
 };

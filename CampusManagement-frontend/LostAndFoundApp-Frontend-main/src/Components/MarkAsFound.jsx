@@ -149,7 +149,7 @@ const MarkAsFound = () => {
                       min={lostItem.lostDate}
                       max={new Date().toISOString().slice(0, 10)}
                       required
-                      className="block w-full pl-10 pr-3 py-2 rounded-lg border border-gray-300 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+                      className="block w-full pl-10 pr-3 py-2 rounded-lg border border-gray-300 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 cursor-pointer"
                     />
                   </div>
                 </div>
@@ -161,7 +161,7 @@ const MarkAsFound = () => {
             <button
               onClick={handleMarkAsFound}
               disabled={isSubmitting}
-              className="bg-green-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-700 disabled:opacity-60 transition-colors"
+              className="bg-green-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-700 disabled:opacity-60 transition-colors cursor-pointer"
             >
               {isSubmitting ? "Confirming..." : "Confirm & Mark Found"}
             </button>
