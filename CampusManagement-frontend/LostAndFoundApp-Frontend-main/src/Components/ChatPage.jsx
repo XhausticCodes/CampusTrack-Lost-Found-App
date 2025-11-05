@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
 import { useWebSocket } from "../Context/WebSocketContext";
 import { ThemeContext } from "../Context/ThemeContext";
 import {
@@ -45,7 +44,6 @@ const ChatPage = () => {
   } = useWebSocket();
 
   const { theme } = useContext(ThemeContext);
-  const navigate = useNavigate();
 
   const [globalInput, setGlobalInput] = useState("");
   const [privateInput, setPrivateInput] = useState("");
@@ -56,6 +54,13 @@ const ChatPage = () => {
   // --- NEW: Temporary display name (alias) ---
   const [displayName, setDisplayName] = useState(currentUser?.username || "");
   const [isEditingName, setIsEditingName] = useState(false);
+
+  // Update displayName when currentUser changes
+  useEffect(() => {
+    if (currentUser?.username) {
+      setDisplayName(currentUser.username);
+    }
+  }, [currentUser?.username]);
 
   // --- NEW: Flair system ---
   const flairs = {
