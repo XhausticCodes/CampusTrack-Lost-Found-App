@@ -7,18 +7,17 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
 
-// import java.security.Principal; // No longer needed
-
 @Controller
 public class ChatController {
 
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
+    @Autowired
+    private WebSocketSessionRegistry sessionRegistry;
+
     /**
      * Handles global (broadcast) messages.
-     * We now trust the sender from the payload because the WebSocket
-     * Principal is null due to cross-origin session issues.
      */
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/global")
@@ -33,25 +32,41 @@ public class ChatController {
 
     /**
      * Handles private (point-to-point) messages.
-     * We also trust the sender from the payload here.
+     * Uses topic-based routing: sends to /topic/private.{recipient} and /topic/private.{sender}
      */
     @MessageMapping("/chat.sendPrivateMessage")
     public void sendPrivateMessage(@Payload ChatMessage chatMessage) {
-        // We are trusting the sender from the client payload.
+        // Validate sender and recipient
         if (chatMessage.getSender() == null || chatMessage.getSender().isEmpty()) {
-            // Don't send a message that has no sender or recipient
             if (chatMessage.getRecipient() == null || chatMessage.getRecipient().isEmpty()) {
+                System.out.println("Cannot send private message: missing sender and recipient");
                 return;
             }
             chatMessage.setSender("Anonymous");
         }
 
+        if (chatMessage.getRecipient() == null || chatMessage.getRecipient().isEmpty()) {
+            System.out.println("Cannot send private message: missing recipient");
+            return;
+        }
+
         chatMessage.setType(ChatMessage.MessageType.CHAT);
         
-        messagingTemplate.convertAndSendToUser(
-            chatMessage.getRecipient(), 
-            "/queue/private", 
-            chatMessage
-        );
+        // Check if recipient is online
+        if (!sessionRegistry.isUserOnline(chatMessage.getRecipient())) {
+            System.out.println("User " + chatMessage.getRecipient() + " is not online. Message not delivered.");
+            // Still send to sender so they see their message
+        }
+        
+        // Send to recipient's private topic
+        String recipientTopic = "/topic/private." + chatMessage.getRecipient();
+        messagingTemplate.convertAndSend(recipientTopic, chatMessage);
+        
+        // Send to sender's private topic so they see their sent message
+        String senderTopic = "/topic/private." + chatMessage.getSender();
+        messagingTemplate.convertAndSend(senderTopic, chatMessage);
+        
+        System.out.println("Private message sent from " + chatMessage.getSender() + 
+                          " to " + chatMessage.getRecipient());
     }
 }

@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useWebSocket } from "../Context/WebSocketContext";
 import { ThemeContext } from "../Context/ThemeContext";
 import {
@@ -34,6 +35,7 @@ const ThemeToggleButton = () => {
 };
 
 const ChatPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const {
     isConnected,
     globalMessages,
@@ -61,6 +63,16 @@ const ChatPage = () => {
       setDisplayName(currentUser.username);
     }
   }, [currentUser?.username]);
+
+  // Check for user parameter in URL to auto-start private chat
+  useEffect(() => {
+    const userParam = searchParams.get("user");
+    if (userParam && userParam !== activeChatUser) {
+      setActiveChatUser(userParam);
+      // Clear the URL parameter after setting it
+      setSearchParams({});
+    }
+  }, [searchParams, activeChatUser, setSearchParams]);
 
   // --- NEW: Flair system ---
   const flairs = {

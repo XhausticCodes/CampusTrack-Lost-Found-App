@@ -118,7 +118,7 @@ const LostItemRow = ({ item, onViewDetails, onConnect, theme }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
 
-  const handleRowClick = async (e) => {
+  const handleRowClick = async () => {
     if (!hasLoaded) {
       setIsLoading(true);
       try {
@@ -312,8 +312,6 @@ const LostItemTrack = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [searchLoading, setSearchLoading] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { theme } = useContext(ThemeContext);
 
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
@@ -349,18 +347,17 @@ const LostItemTrack = () => {
   }, [debouncedSearchQuery, username, handleSearch]);
 
   const openModal = (item) => {
-    setSelectedItem(item);
-    setIsModalOpen(true);
+    // Modal functionality can be added here if needed in the future
+    console.log("Viewing item details:", item);
   };
 
   const handleConnect = (item) => {
-    console.log("Connecting to user:", item.reportedBy || item.username);
-    openModal(item);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedItem(null);
+    const targetUsername = item.reportedBy || item.username;
+    console.log("Connecting to user:", targetUsername);
+    // Navigate to chat page with the user's username
+    if (targetUsername) {
+      navigate(`/chat?user=${encodeURIComponent(targetUsername)}`);
+    }
   };
   const handleClearSearch = () => setSearchQuery("");
   const isSearching = searchQuery.trim() !== "";
