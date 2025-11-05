@@ -335,7 +335,7 @@ const ChatPage = () => {
                           {flair.label}
                         </span>
                       </p>
-                      <p className="text-xs text-gray-400">
+                      <p className="text-xs text-white">
                         {new Date().toLocaleTimeString()}
                       </p>
                     </div>

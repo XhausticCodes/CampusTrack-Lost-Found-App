@@ -66,7 +66,7 @@ const Profile = () => {
         theme === "light" ? "bg-gray-50" : "bg-gray-900 text-white"
       }`}
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Return Button */}
         <div className="mb-4">
           <ReturnButton />
@@ -85,25 +85,36 @@ const Profile = () => {
                 : "bg-gray-800 border-b border-gray-700"
             }`}
           >
-            <div className="flex items-center gap-4">
-              <div className="bg-blue-100 p-3 rounded-full">
-                <UserCircle className="h-8 w-8 text-blue-600" />
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-4">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <UserCircle className="h-8 w-8 text-blue-600" />
+                </div>
+                <div>
+                  <h2
+                    className={`text-2xl font-bold ${
+                      theme === "light" ? "text-gray-800" : "text-white"
+                    }`}
+                  >
+                    Personal Details
+                  </h2>
+                  <p
+                    className={`text-sm ${
+                      theme === "light" ? "text-gray-500" : "text-gray-400"
+                    }`}
+                  >
+                    Your account information and activity summary.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h2
-                  className={`text-2xl font-bold ${
-                    theme === "light" ? "text-gray-800" : "text-white"
-                  }`}
-                >
-                  Personal Details
-                </h2>
-                <p
-                  className={`text-sm ${
-                    theme === "light" ? "text-gray-500" : "text-gray-400"
-                  }`}
-                >
-                  Your account information and activity summary.
-                </p>
+              <div className="flex items-center">
+              <h2
+                    className={`text-4xl font-bold ${
+                      theme === "light" ? "text-gray-800" : "text-white"
+                    }`}
+                  >
+                    {user.username}
+                  </h2>
               </div>
             </div>
           </div>
@@ -120,7 +131,6 @@ const Profile = () => {
             <table className="min-w-full">
               <tbody className="divide-y divide-gray-200">
                 {[
-                  { label: "Username", value: user.username },
                   { label: "Name", value: user.personName },
                   { label: "Email", value: user.email },
                   { label: "Role", value: user.role },

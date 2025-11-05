@@ -2,7 +2,6 @@ package edu.infosys.lostAndFoundApplication.chat;
 
 import java.util.Objects;
 
-// Removed Lombok imports
 
 public class ChatMessage {
     private String content;

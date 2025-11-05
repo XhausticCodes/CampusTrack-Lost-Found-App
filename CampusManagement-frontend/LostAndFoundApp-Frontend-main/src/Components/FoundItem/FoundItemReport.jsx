@@ -73,7 +73,7 @@ const FoundItemReport = () => {
         theme === "light" ? "bg-gray-50" : "bg-gray-900 text-white"
       }`}
     >
-      <div className="max-w-7xl mx-auto h-full flex flex-col">
+      <div className="max-w-6xl mx-auto h-full flex flex-col">
         <div className="mb-4">
           {/* <ReturnButton /> */}
           <ReturnHome />
