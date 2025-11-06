@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getUserDetails } from "../../Services/LoginService";
-import StudentNavbar from "../Navbar/StudentNavbar";
-import AdminNavbar from "../Navbar/AdminNavbar";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { getUserDetails } from "../Services/LoginService";
+import StudentNavbar from "../Components/Navbar/StudentNavbar";
+import AdminNavbar from "../Components/Navbar/AdminNavbar";
+import { ThemeContext } from "../Context/ThemeContext";
 
 const RoleBasedLayout = ({ children }) => {
   const { theme } = useContext(ThemeContext);

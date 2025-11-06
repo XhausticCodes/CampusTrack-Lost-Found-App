@@ -19,7 +19,7 @@ import NotFound from "./Pages/NotFoundPage";
 // --- IMPORTS FOR CHAT ---
 import { WebSocketProvider } from "./Context/WebSocketContext";
 import ChatPage from "./Pages/ChatPage";
-import RoleBasedLayout from "./Components/Layout/RoleBasedLayout";
+import RoleBasedLayout from "./Layout/RoleBasedLayout";
 
 function App() {
   return (

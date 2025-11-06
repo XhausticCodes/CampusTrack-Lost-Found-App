@@ -16,10 +16,10 @@ import {
   Clock,
   MapPin,
   Tag,
-  Users,
 } from "lucide-react";
 import { ThemeContext } from "../../Context/ThemeContext";
 import ReturnButton from "../Buttons/ReturnButton";
+import ConnectButton from "../Buttons/ConnectButton";
 
 const useDebounce = (value, delay) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -97,17 +97,7 @@ const FoundItemTableRow = ({ item, onConnect, theme }) => (
       </p>
     </td>
     <td className="py-3 px-4">
-      <button
-        onClick={() => onConnect && onConnect(item)}
-        className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg transition-all shadow-md transform hover:scale-105 ${
-          theme === "light"
-            ? "bg-green-100 text-green-700 border border-green-200 hover:bg-green-200"
-            : "bg-green-800/20 text-green-400 border border-green-600/50 hover:bg-green-800/30"
-        }`}
-      >
-        <Users size={16} />
-        Connect
-      </button>
+      <ConnectButton onConnect={onConnect} item={item} />
     </td>
   </tr>
 );
