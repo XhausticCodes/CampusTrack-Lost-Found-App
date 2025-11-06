@@ -1,7 +1,6 @@
 import React from "react";
-import GridMotion from "../../../public/GridMotion.jsx";
-import SpotLightCard from "../../../public/SpotLightCard.jsx";
-import LoginForm from "../../Auth/Signin/LoginForm.jsx";
+import GridMotion from "../../public/GridMotion";
+import LoginForm from "../Components/Forms/LoginForm";
 
 const LoginPage = () => {
   const items = [

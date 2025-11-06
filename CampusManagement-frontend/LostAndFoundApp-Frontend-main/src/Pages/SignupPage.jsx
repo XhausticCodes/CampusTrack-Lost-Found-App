@@ -1,6 +1,6 @@
 import React from "react";
-import GridMotion from "../../../public/GridMotion";
-import SignupForm from "../../Auth/Signup/SignupForm";
+import GridMotion from "../../public/GridMotion";
+import SignupForm from "../Components/Forms/SignupForm";
 
 const SigninPage = () => {
   const items = [

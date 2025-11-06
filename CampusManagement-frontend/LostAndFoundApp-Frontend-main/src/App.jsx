@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginPage from "./Auth/Signin/LoginPage";
-import SigninPage from "./Auth/Signup/SignupPage";
+import LoginPage from "./Pages/LoginPage";
+import SigninPage from "./Pages/SignupPage";
 import AdminMenu from "./Components/Dashboard/AdminMenu";
 import StudentMenu from "./Components/Dashboard/StudentMenu";
 import LostItemSubmit from "./Components/LostItem/LostItemSubmit";
@@ -12,13 +12,13 @@ import LostItemTrack from "./Components/LostItem/LostItemTrack";
 import FoundItemTrack from "./Components/FoundItem/FoundItemTrack";
 import MarkAsFound from "./Components/MarkAsFound";
 import ProtectedRoute from "./Auth/ProtectedRoute";
-import Profile from "./Components/Profile";
+import Profile from "./Pages/ProfilePage";
 import "./App.css";
-import NotFound from "./Components/NotFound";
+import NotFound from "./Pages/NotFoundPage";
 
 // --- IMPORTS FOR CHAT ---
 import { WebSocketProvider } from "./Context/WebSocketContext";
-import ChatPage from "./Components/ChatPage";
+import ChatPage from "./Pages/ChatPage";
 import RoleBasedLayout from "./Components/Layout/RoleBasedLayout";
 
 function App() {

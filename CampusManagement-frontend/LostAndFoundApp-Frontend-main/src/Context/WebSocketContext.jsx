@@ -19,6 +19,7 @@ export const WebSocketProvider = ({ children }) => {
   const [globalMessages, setGlobalMessages] = useState([]);
   const [privateMessages, setPrivateMessages] = useState({});
   const [currentUser, setCurrentUser] = useState(null);
+  const [activeUserCount, setActiveUserCount] = useState(0);
 
   // 1. Initial User Load (from localStorage or API)
   useEffect(() => {
@@ -82,10 +83,22 @@ export const WebSocketProvider = ({ children }) => {
         setIsConnected(true);
         setGlobalMessages([]);
         setPrivateMessages({});
+        setActiveUserCount(0); // Reset count on reconnect
 
         // Global Subscription
         client.subscribe("/topic/global", (msg) => {
           const chatMsg = JSON.parse(msg.body);
+          
+          // Handle JOIN/LEAVE messages to update user count
+          if (chatMsg.type === "JOIN" || chatMsg.type === "LEAVE") {
+            // Extract user count from message content
+            // Format: "username joined/left the chat. Online users: X"
+            const countMatch = chatMsg.content?.match(/Online users: (\d+)/);
+            if (countMatch) {
+              setActiveUserCount(parseInt(countMatch[1], 10));
+            }
+          }
+          
           setGlobalMessages((prev) => [...prev, chatMsg]);
         });
 
@@ -267,6 +280,7 @@ export const WebSocketProvider = ({ children }) => {
         globalMessages,
         privateMessages,
         currentUser,
+        activeUserCount,
         sendGlobalMessage,
         sendPrivateMessage,
         connect,

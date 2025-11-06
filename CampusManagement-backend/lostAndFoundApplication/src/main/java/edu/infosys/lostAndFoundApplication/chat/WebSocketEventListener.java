@@ -8,7 +8,7 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
 /**
  * Listens to WebSocket events for logging purposes.
- * Note: Session registration is now handled by StompChannelInterceptor
+ * Note: Session registration and JOIN/LEAVE broadcasting are now handled by StompChannelInterceptor
  * to capture username from STOMP CONNECT frames.
  */
 @Component

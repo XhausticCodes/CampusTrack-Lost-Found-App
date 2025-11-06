@@ -7,7 +7,7 @@ import {
 } from "../Services/ItemService";
 import { ArrowLeft, UserCircle, Search, ArchiveRestore } from "lucide-react";
 import { ThemeContext } from "../Context/ThemeContext";
-import ReturnButton from "./Buttons/ReturnButton";
+import ReturnButton from "../Components/Buttons/ReturnButton";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
