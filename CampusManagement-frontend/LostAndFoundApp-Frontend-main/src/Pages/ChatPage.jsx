@@ -13,26 +13,25 @@ import {
   Edit2,
   Check,
 } from "lucide-react";
-import ReturnButton from "../Components/Buttons/ReturnButton";
 import ReturnHome from "../Components/Buttons/ReturnHome";
 
 // Theme toggle button
-const ThemeToggleButton = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  return (
-    <button
-      onClick={toggleTheme}
-      style={{ cursor: "pointer" }}
-      className={`p-2 rounded-full ${
-        theme === "light"
-          ? "bg-gray-200 text-gray-800 hover:bg-gray-300"
-          : "bg-gray-700 text-white hover:bg-gray-600"
-      }`}
-    >
-      {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-    </button>
-  );
-};
+// const ThemeToggleButton = () => {
+//   const { theme, toggleTheme } = useContext(ThemeContext);
+//   return (
+//     <button
+//       onClick={toggleTheme}
+//       style={{ cursor: "pointer" }}
+//       className={`p-2 rounded-full ${
+//         theme === "light"
+//           ? "bg-gray-200 text-gray-800 hover:bg-gray-300"
+//           : "bg-gray-700 text-white hover:bg-gray-600"
+//       }`}
+//     >
+//       {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+//     </button>
+//   );
+// };
 
 const ChatPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -319,7 +318,7 @@ const ChatPage = () => {
             >
               {isConnected ? "Connected" : "Disconnected"}
             </span>
-            <ThemeToggleButton />
+            {/* <ThemeToggleButton /> */}
           </div>
         </div>
 

@@ -8,6 +8,7 @@ import { getAllLostItems, getAllFoundItems } from "../Services/ItemService";
 import { User, Search, ArchiveRestore, X, AlertTriangle } from "lucide-react";
 import { ThemeContext } from "../Context/ThemeContext";
 import ReturnButton from "./Buttons/ReturnButton";
+import ReturnHome from "./Buttons/ReturnHome";
 
 const DeleteStudentList = () => {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ const DeleteStudentList = () => {
       setStudents(
         students.filter((s) => s.username !== studentToDelete.username)
       );
-      setStudentToDelete(null); // Close delete modal
+      setStudentToDelete(null);
     } catch (err) {
       alert("Failed to delete student");
       console.error(err);
@@ -106,7 +107,7 @@ const DeleteStudentList = () => {
           }`}
         >
           <div className="mb-4">
-            <ReturnButton />
+            <ReturnHome />
           </div>
 
           <h2
@@ -208,7 +209,7 @@ const DeleteStudentList = () => {
                             e.stopPropagation();
                             setStudentToDelete(student);
                           }}
-                          className={`px-4 py-2 rounded shadow-sm transition duration-200 ${
+                          className={`px-4 py-2 rounded shadow-sm transition duration-200 cursor-pointer ${
                             theme === "light"
                               ? "bg-red-500 hover:bg-red-600 text-white"
                               : "bg-red-600 hover:bg-red-700 text-white"
@@ -345,10 +346,10 @@ const DeleteStudentList = () => {
       {/* Delete Confirmation Modal */}
       {studentToDelete && (
         <div
-          className={`fixed inset-0 flex items-center justify-center z-50 ${
+          className={`fixed inset-0 backdrop-blur-md flex items-center justify-center z-50 ${
             theme === "light"
-              ? "bg-black bg-opacity-40"
-              : "bg-black bg-opacity-70"
+              ? "bg-black/50 bg-opacity-40"
+              : "bg-black/10 bg-opacity-70"
           }`}
         >
           <div
@@ -386,7 +387,7 @@ const DeleteStudentList = () => {
             <div className="flex justify-center gap-4">
               <button
                 onClick={handleDelete}
-                className={`px-6 py-2 rounded-lg transition duration-200 ${
+                className={`px-6 py-2 rounded-lg transition duration-200 cursor-pointer ${
                   theme === "light"
                     ? "bg-red-600 hover:bg-red-700 text-white"
                     : "bg-red-600 hover:bg-red-700 text-white"
@@ -396,7 +397,7 @@ const DeleteStudentList = () => {
               </button>
               <button
                 onClick={() => setStudentToDelete(null)}
-                className={`px-6 py-2 rounded-lg transition duration-200 ${
+                className={`px-6 py-2 rounded-lg transition duration-200 cursor-pointer ${
                   theme === "light"
                     ? "bg-gray-200 hover:bg-gray-300 text-gray-800"
                     : "bg-gray-700 hover:bg-gray-600 text-gray-200"
