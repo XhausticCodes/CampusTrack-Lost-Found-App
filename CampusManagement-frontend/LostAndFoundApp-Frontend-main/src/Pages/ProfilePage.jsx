@@ -8,6 +8,7 @@ import {
 import { ArrowLeft, UserCircle, Search, ArchiveRestore } from "lucide-react";
 import { ThemeContext } from "../Context/ThemeContext";
 import ReturnButton from "../Components/Buttons/ReturnButton";
+import ReturnHome from "../Components/Buttons/ReturnHome";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -69,7 +70,8 @@ const Profile = () => {
       <div className="max-w-6xl mx-auto">
         {/* Return Button */}
         <div className="mb-4">
-          <ReturnButton />
+          {/* <ReturnButton /> */}
+          <ReturnHome />
         </div>
 
         <div

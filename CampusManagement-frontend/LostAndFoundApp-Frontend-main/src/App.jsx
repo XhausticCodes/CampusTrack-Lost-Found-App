@@ -20,10 +20,11 @@ import NotFound from "./Pages/NotFoundPage";
 import { WebSocketProvider } from "./Context/WebSocketContext";
 import ChatPage from "./Pages/ChatPage";
 import RoleBasedLayout from "./Layout/RoleBasedLayout";
+import LostItemReportCard from "./Components/LostItem/LostItemReportCard";
+import FoundItemReportCard from "./Components/FoundItem/FoundItemReportCard";
 
 function App() {
   return (
-    // --- WRAP APP WITH WEBSOCKET PROVIDER FOR GLOBAL ACCESS ---
     <WebSocketProvider>
       <div className="App">
         <BrowserRouter>
@@ -31,7 +32,6 @@ function App() {
             {/* Public Routes */}
             <Route path="/" element={<LoginPage />} />
             <Route path="/Register" element={<SigninPage />} />
-            
 
             {/* Admin Routes */}
             <Route
@@ -145,7 +145,8 @@ function App() {
               element={
                 <ProtectedRoute allowedRoles={["Admin", "Student"]}>
                   <RoleBasedLayout>
-                    <LostItemReport />
+                    {/* <LostItemReport /> */}
+                    <LostItemReportCard />
                   </RoleBasedLayout>
                 </ProtectedRoute>
               }
@@ -155,7 +156,8 @@ function App() {
               element={
                 <ProtectedRoute allowedRoles={["Admin", "Student"]}>
                   <RoleBasedLayout>
-                    <FoundItemReport />
+                    {/* <FoundItemReport /> */}
+                    <FoundItemReportCard />
                   </RoleBasedLayout>
                 </ProtectedRoute>
               }

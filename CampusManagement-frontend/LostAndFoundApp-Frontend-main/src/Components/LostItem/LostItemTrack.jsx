@@ -266,7 +266,7 @@ const LostItemRow = ({ item, onViewDetails, onConnect, theme }) => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className={`${theme === "light" ? "bg-gray-100" : "bg-gray-800"}`}>
                     {matches.map((found) => (
                       <FoundItemTableRow
                         key={found.foundItemId}

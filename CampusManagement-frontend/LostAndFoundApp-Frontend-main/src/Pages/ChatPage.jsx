@@ -86,15 +86,15 @@ const ChatPage = () => {
   const themeClasses = {
     bgPrimary: theme === "light" ? "bg-white" : "bg-gray-800",
     bgSecondary: theme === "light" ? "bg-gray-50" : "bg-gray-900",
-    bgTertiary: theme === "light" ? "bg-gray-100" : "bg-gray-700",
+    bgTertiary: theme === "light" ? "bg-gray-100 shadow-md" : "bg-gray-700",
     textPrimary: theme === "light" ? "text-gray-900" : "text-white",
     textSecondary: theme === "light" ? "text-gray-500" : "text-gray-400",
     borderPrimary: theme === "light" ? "border-gray-200" : "border-gray-700",
-    msgMeBg: "bg-yellow-600",
+    msgMeBg: theme === "light" ? "bg-yellow-400" : "bg-yellow-500",
     msgMeText: "text-black",
     msgOtherBg: theme === "light" ? "bg-gray-200" : "bg-gray-700",
     msgOtherText: theme === "light" ? "text-gray-900" : "text-white",
-    activeChatBg: "bg-yellow-600",
+    activeChatBg: theme === "light" ? "bg-yellow-400" : "bg-yellow-500",
     activeChatText: "text-black",
   };
 
